@@ -1,0 +1,6 @@
+DROP TABLE IF EXISTS #SYSBASE_COLUMNS
+SELECT *  
+INTO #SYSBASE_COLUMNS
+FROM OPENQUERY(BIW_TEST, 'SELECT c.table_id,t.name,c.column_id,c.column_name,c.base_type_str 
+FROM systabcol c inner join sysobjects t on c.table_id = t.id where type = ''U''') 
+ORDER BY 1
